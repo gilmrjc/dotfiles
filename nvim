@@ -12,12 +12,17 @@ Plug 'valloric/youcompleteme'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim',  { 'for': 'html' }
 Plug 'raimondi/delimitmate'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides', { 'for': 'html' }
 Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
+Plug 'ehamberg/vim-cute-python', { 'for': 'python' }
+
 
 "Colorschemas
 Plug 'evgenyzinoviev/vim-vendetta'
@@ -29,7 +34,7 @@ Plug 'blindFS/flattr.vim'
 
 call plug#end()
 
-filetype plugin on
+filetype plugin indent on
 
 colorscheme vendetta
 
@@ -43,6 +48,19 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 let g:indent_guides_auto_colors = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
+let g:airline_powerline_fonts = 1
+let g:airline_extensions = ['branch', 'virtualenv', 'wordcount', 'whitespace', 'ycm']
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
+let g:airline_theme = 'wombat'
+
+set listchars=tab:▸\ ,trail:·,extends:>,precedes:<,nbsp:·
+if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
+    set listchars=tab:⇥\ ,trail:␣,extends:⇉,precedes:⇇,nbsp:⚭
+    set fillchars=vert:╎,fold:·
+endif
+set list
 
 set ruler
 set number
