@@ -1,0 +1,14 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.config/nvim/init.vim:
+        create: true
+        path: nvim
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
