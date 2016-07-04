@@ -8,7 +8,7 @@ call plug#begin()
 " Plugins
 Plug 'junegunn/vim-plug'
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
-Plug 'valloric/youcompleteme'
+Plug 'valloric/youcompleteme', { 'do': './install.py --tern-completer --clang-completer'}
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
@@ -40,6 +40,9 @@ colorscheme vendetta
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
+let g:ycm_complete_in_strings = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
+
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
@@ -64,3 +67,28 @@ set list
 
 set ruler
 set number
+set relativenumber
+
+set autoindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set smartindent
+set smarttab
+set expandtab
+
+set nowrap
+set textwidth=80
+set showmatch
+set autoread
+set showcmd
+
+set hlsearch
+set smartcase
+set incsearch
+
+set backspace=indent,eol,start
+
+set scrolloff=4
+set sidescrolloff=20
+set sidescroll=10
