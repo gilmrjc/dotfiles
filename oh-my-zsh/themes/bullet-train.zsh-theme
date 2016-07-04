@@ -18,6 +18,7 @@ VIRTUAL_ENV_DISABLE_PROMPT=true
 # Define order and content of prompt
 if [ ! -n "${BULLETTRAIN_PROMPT_ORDER+1}" ]; then
   BULLETTRAIN_PROMPT_ORDER=(
+    battery
     time
     status
     custom
@@ -396,6 +397,51 @@ prompt_custom() {
   prompt_segment $BULLETTRAIN_CUSTOM_BG $BULLETTRAIN_CUSTOM_FG "${BULLETTRAIN_CUSTOM_MSG}"
 }
 
+# Battery Level
+prompt_battery() {
+  HEART='♥ '
+
+  if [[ $(uname) == "Linux"  ]] ; then
+
+    function battery_is_charging() {
+      ! [[ $(acpi 2&>/dev/null | grep -c '^Battery.*Discharging') -gt 0 ]]
+    }
+
+    function battery_pct() {
+      if (( $+commands[acpi] )) ; then
+        echo "$(acpi | cut -f2 -d ',' | tr -cd '[:digit:]')"
+      fi
+    }
+
+    function battery_pct_remaining() {
+      if [ ! $(battery_is_charging) ] ; then
+        battery_pct
+      else
+        echo "External Power"
+      fi
+    }
+
+    function battery_time_remaining() {
+      if [[ $(acpi 2&>/dev/null | grep -c '^Battery.*Discharging') -gt 0 ]] ; then
+        echo $(acpi | cut -f3 -d ',')
+      fi
+    }
+
+    b=$(battery_pct_remaining)
+    if [[ $(acpi 2&>/dev/null | grep -c '^Battery.*Discharging') -gt 0 ]] ; then
+      if [ $b -gt 40 ] ; then
+        prompt_segment green white
+      elif [ $b -gt 20 ] ; then
+        prompt_segment yellow white
+      else
+        prompt_segment red white
+      fi
+      echo -n "$fg_bold[white]$HEART$(battery_pct_remaining)%%$fg_no_bold[white]"
+    fi
+
+  fi
+}
+
 # Git
 prompt_git() {
   if [[ $BULLETTRAIN_GIT_SHOW == false ]]; then
@@ -406,6 +452,7 @@ prompt_git() {
   repo_path=$(git rev-parse --git-dir 2>/dev/null)
 
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
+    git fetch
     if [[ $BULLETTRAIN_GIT_COLORIZE_DIRTY == true && -n $(git status --porcelain --ignore-submodules) ]]; then
       BULLETTRAIN_GIT_BG=$BULLETTRAIN_GIT_COLORIZE_DIRTY_BG_COLOR
       BULLETTRAIN_GIT_FG=$BULLETTRAIN_GIT_COLORIZE_DIRTY_FG_COLOR

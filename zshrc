@@ -1,6 +1,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+BULLETTRAIN_PROMPT_ADD_NEWLINE=false
+BULLETTRAIN_STATUS_EXIT_SHOW=true
+
 ZSH_THEME="bullet-train"
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_TITLE="true"
@@ -47,7 +50,6 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
 
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/proyectos
