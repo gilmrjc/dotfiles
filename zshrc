@@ -55,3 +55,4 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/proyectos
 
 alias python=python3
+alias vim=nvim
