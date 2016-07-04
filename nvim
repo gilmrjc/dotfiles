@@ -8,7 +8,7 @@ call plug#begin()
 " Plugins
 Plug 'junegunn/vim-plug'
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
-Plug 'valloric/youcompleteme', { 'do': './install.py --tern-completer --clang-completer'}
+Plug 'valloric/youcompleteme', { 'do': 'python3 install.py --tern-completer --clang-completer'}
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
@@ -70,12 +70,14 @@ set number
 set relativenumber
 
 set autoindent
+set copyindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set smartindent
 set smarttab
 set expandtab
+set shiftround
 
 set nowrap
 set textwidth=80
@@ -88,7 +90,30 @@ set smartcase
 set incsearch
 
 set backspace=indent,eol,start
+set hidden
 
 set scrolloff=4
 set sidescrolloff=20
 set sidescroll=10
+
+set title
+
+set nobackup
+
+let mapleader=","
+set pastetoggle=<F2>
+
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+nmap <silent> ,/ :nohlsearch<CR>
+
+cmap w!! w !sudo tee % >/dev/null
