@@ -24,6 +24,7 @@ antigen bundle sudo
 antigen bundle virtualenvwrapper
 antigen bundle wd
 
+antigen bundle djui/alias-tips
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen theme gilmrjc/bullet-train-oh-my-zsh-theme bullet-train
