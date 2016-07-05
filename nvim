@@ -116,13 +116,23 @@ map <left> <nop>
 map <right> <nop>
 
 " Easy window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
 nmap <silent> ,/ :nohlsearch<CR>
 
 cmap w!! w !sudo tee % >/dev/null
 
 autocmd BufRead nvim set filetype=vim
+
+""" memap CAPS LOCK to ESC
+autocmd VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+autocmd VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+
+:tnoremap <ESC> <C-\><C-n>
