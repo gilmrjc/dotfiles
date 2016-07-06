@@ -62,3 +62,5 @@ alias python=python3
 alias pip=pip3
 alias nv=nvim
 eval "$(thefuck --alias)"
+
+quote
