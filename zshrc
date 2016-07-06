@@ -56,5 +56,4 @@ export GOPATH=$HOME/.go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 alias python=python3
-alias vim=nvim
-alias vi=nvim
+alias nv=nvim
