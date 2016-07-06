@@ -9,6 +9,7 @@
     ~/.config/nvim/init.vim: nvim
     ~/.zshrc: zshrc
     ~/.antigen.zsh: antigen/antigen.zsh
+    ~/.fonts: fonts
     ~/.local/share/fonts: fonts
 
 - shell:
