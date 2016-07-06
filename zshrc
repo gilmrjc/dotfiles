@@ -1,3 +1,4 @@
+PATH=$PATH:~/.local/bin
 source $HOME/.antigen.zsh
 
 antigen use oh-my-zsh
@@ -56,4 +57,6 @@ export GOPATH=$HOME/.go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 alias python=python3
+alias pip=pip3
 alias nv=nvim
+eval "$(thefuck --alias)"
