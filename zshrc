@@ -56,6 +56,8 @@ export PROJECT_HOME=$HOME/proyectos
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
+export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ please"
+
 alias python=python3
 alias pip=pip3
 alias nv=nvim
