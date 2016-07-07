@@ -109,8 +109,6 @@ set sidescroll=1
 
 set title
 
-set concealcursor=nc
-
 set nobackup
 
 let mapleader=","
@@ -142,6 +140,8 @@ autocmd VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 autocmd VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
 :tnoremap <ESC> <C-\><C-n>
+
+set concealcursor=nc
 
 " " Copy to clipboard
 vnoremap  <leader>y  "+y
