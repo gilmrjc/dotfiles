@@ -109,6 +109,8 @@ set sidescroll=1
 
 set title
 
+set concealcursor="vni"
+
 set nobackup
 
 let mapleader=","
