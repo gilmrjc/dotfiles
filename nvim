@@ -10,6 +10,7 @@ Plug 'junegunn/vim-plug'
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
 Plug 'valloric/youcompleteme', { 'do': 'python3 install.py --tern-completer --clang-completer'}
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown', { 'for' : 'markdown' }
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
