@@ -69,6 +69,8 @@ let g:airline_theme = 'wombat'
 "let g:indentLine_enabled = 1
 let g:indentLine_indentLevel = 3
 
+let NERDTreeIgnore = ['\.pyc$']
+
 set listchars=tab:▸\ ,trail:·,extends:>,precedes:<,nbsp:·
 if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
     set listchars=tab:⇥\ ,trail:␣,extends:⇉,precedes:⇇,nbsp:⚭
