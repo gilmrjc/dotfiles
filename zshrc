@@ -1,3 +1,22 @@
+if [ -d "$HOME/.pyenv" ]; then
+  export PATH="/home/gil/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+else
+  curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+  export PATH="/home/gil/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+pyenv install -s 2.7.12
+pyenv install -s 3.3.6
+pyenv install -s 3.4.5
+pyenv install -s 3.5.2
+pyenv install -s pypy-4.0.1
+pyenv rehash
+pyenv global 3.4.5 system 3.5.2 2.7.12 3.3.6 pypy-4.0.1
+
 PATH=$PATH:~/.local/bin
 source $HOME/.antigen.zsh
 
@@ -59,9 +78,6 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ please"
 
-alias python=python3
-alias pip=pip3
-alias nv=nvim
 eval "$(thefuck --alias)"
 
 quote
