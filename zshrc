@@ -1,12 +1,10 @@
 if [ -d "$HOME/.pyenv" ]; then
   export PATH="/home/gil/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
 else
   curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
   export PATH="/home/gil/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
 fi
 
 pyenv install -s 2.7.12
@@ -42,7 +40,6 @@ antigen bundle pip
 antigen bundle python
 antigen bundle rand-quote
 antigen bundle sudo
-antigen bundle virtualenvwrapper
 antigen bundle wd
 
 antigen bundle caarlos0/git-add-remote
@@ -73,11 +70,16 @@ fi
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/proyectos
 
+if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
+  source /usr/local/bin/virtualenvwrapper.sh
+fi
+
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ please"
 
+alias nv=nvim
 eval "$(thefuck --alias)"
 
 quote
