@@ -7,13 +7,15 @@ else
   eval "$(pyenv init -)"
 fi
 
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
+
 pyenv install -s 2.7.12
 pyenv install -s 3.3.6
 pyenv install -s 3.4.5
 pyenv install -s 3.5.2
 pyenv install -s pypy-4.0.1
 pyenv rehash
-pyenv global 3.4.5 system 3.5.2 2.7.12 3.3.6 pypy-4.0.1
+pyenv global 3.4.5 3.5.2 2.7.12 3.3.6 pypy-4.0.1 system
 
 PATH=$PATH:~/.local/bin
 source $HOME/.antigen.zsh
