@@ -1,9 +1,9 @@
 if [ -d "$HOME/.pyenv" ]; then
-  export PATH="/home/gil/.pyenv/bin:$PATH"
+  export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
 else
   curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-  export PATH="/home/gil/.pyenv/bin:$PATH"
+  export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
 fi
 
