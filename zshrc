@@ -72,8 +72,8 @@ fi
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/proyectos
 
-if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
-  source /usr/local/bin/virtualenvwrapper.sh
+if [[ -f "$HOME/.local/bin/virtualenvwrapper.sh" ]]; then
+  source $HOME/.local/bin/virtualenvwrapper.sh
 fi
 
 export GOPATH=$HOME/.go

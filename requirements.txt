@@ -1,2 +1,3 @@
 neovim~=0.1.0
 thefuck~=3.10
+virtualenvwrapper~=4.7.2
