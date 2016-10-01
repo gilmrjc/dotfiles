@@ -37,10 +37,8 @@ antigen bundle common-aliases
 antigen bundle encode64
 antigen bundle gem
 antigen bundle git
-antigen bundle nyan
 antigen bundle pip
 antigen bundle python
-antigen bundle rand-quote
 antigen bundle sudo
 antigen bundle wd
 
