@@ -27,6 +27,8 @@ plugins. That' all the needed steps.
 
 This is some information about what it is installed in my dots.
 
+### zsh
+
 |Command   |Function                                     |
 |----------|---------------------------------------------|
 |take      |Create a dir (and its parents) and cd to it  |
@@ -88,6 +90,7 @@ This is some information about what it is installed in my dots.
 |Esc-w    |Clear prompt                       |
 |Esc-l    |ls                                 |
 |Ctrl-r   |search in the history backwards    |
+|ctrl-k   |enter vi-like mode                 |
 
 | Alias                | Command                                                                                                                                 |
 |:---------------------|:----------------------------------------------------------------------------------------------------------------------------------------|
@@ -208,3 +211,29 @@ This is some information about what it is installed in my dots.
 | gvt                  | git verify-tag                                                                                                                          |
 | gwch                 | git whatchanged -p --abbrev-commit --pretty = medium                                                                                    |
 | gwip                 | git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit -m "--wip--"                                                      |<Paste>
+
+## Vim
+
+### Surround
+
+**The \* means the current cursor position.**
+
+|Old text           |Command  |New text             |
+|-------------------|---------|---------------------|
+|"Hello *world!"    |ds"      |Hello world!         |
+|(123+4*56)/2       |ds)      |123+456/2            |
+|<div>Yo!*</div>    |dst      |Yo!                  |
+|"Hello *world!"    |cs"'     |'Hello world!'       |
+|"Hello *world!"    |cs"<q>   |<q>Hello world!</q>  |
+|(123+4*56)/2       |cs)]     |[123+456]/2          |
+|(123+4*56)/2       |cs)[     |[ 123+456 ]/2        |
+|<div>Yo!*</div>    |cst<p>   |<p>Yo!</p>           |
+|Hello w*orld!      |ysiw)    |Hello (world)!
+|    Hello w*orld!  |yssB     |    {Hello world!}
+
+Marks: (, ), {, }, [, ], <, and >. The targets b, B, r, and a are aliases
+for ), }, ], and >.
+
+Marks-in-line: ',",`.
+
+A t is a pair of HTML or XML tags.
