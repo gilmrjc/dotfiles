@@ -83,5 +83,3 @@ export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ please"
 
 alias nv=nvim
 eval "$(thefuck --alias)"
-
-quote
