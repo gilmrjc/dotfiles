@@ -15,11 +15,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-surround'
+Plug 'raimondi/delimitmate'
 Plug 'mattn/emmet-vim',  { 'for': 'html' }
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'hail2u/vim-css3-syntax', { 'for': [ 'css', 'scss', 'html' ] }
 Plug 'gko/vim-coloresque', { 'for': [ 'css', 'scss', 'html' ] }
-Plug 'raimondi/delimitmate'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
@@ -79,6 +79,7 @@ if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
 endif
 set list
 
+"IDE-like settings
 set ruler
 set number
 set relativenumber
@@ -94,7 +95,6 @@ set expandtab
 set shiftround
 
 set nowrap
-set textwidth=80
 set showmatch
 set autoread
 set showcmd
@@ -114,9 +114,12 @@ set title
 
 set nobackup
 
-let mapleader=","
 let g:NumberToggleTrigger="<F2>"
 
+"Remap leader
+let mapleader=","
+
+"Vim keyboard navigation only
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
@@ -134,19 +137,22 @@ nnoremap <A-l> <C-w>l
 
 nmap <silent> ,/ :nohlsearch<CR>
 
+"sudo commands
 cmap w!! w !sudo tee % >/dev/null
 
+"Format this file
 autocmd BufRead nvim set filetype=vim
 
-""" memap CAPS LOCK to ESC
+"""Remap CAPS LOCK to ESC
 autocmd VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 autocmd VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
+"ESC from terminal mode
 :tnoremap <ESC> <C-\><C-n>
 
 set concealcursor=nc
 
-" " Copy to clipboard
+"Copy to clipboard
 vnoremap  <leader>y  "+y
 vnoremap  <leader>Y  "*y
 nnoremap  <leader>y  "+y
@@ -154,7 +160,7 @@ nnoremap  <leader>yy  "+yy
 nnoremap  <leader>Y  "*y
 nnoremap  <leader>YY  "*yy
 
-" " Paste from clipboard
+"Paste from clipboard
 nnoremap <leader>p "*p
 nnoremap <leader>P "*P
 vnoremap <leader>p "*p
