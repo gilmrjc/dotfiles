@@ -46,7 +46,7 @@ antigen bundle Vifon/deer
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle Seinh/git-prune
-antinge bundle sharat87/zsh-vim-mode
+antigen bundle sharat87/zsh-vim-mode
 
 antigen theme gilmrjc/bullet-train-oh-my-zsh-theme bullet-train
 
