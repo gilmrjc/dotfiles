@@ -14,4 +14,5 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [source ~/.zshrc]
   - [pip install --user -r requirements.txt]
