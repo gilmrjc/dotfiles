@@ -1,10 +1,10 @@
 if [ -d "$HOME/.pyenv" ]; then
   export PATH="$HOME/.pyenv/bin:$PATH"
-  eval "$(pyenv init -)"
+  eval "$(pyenv init - zsh)"
 else
   curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
   export PATH="$HOME/.pyenv/bin:$PATH"
-  eval "$(pyenv init -)"
+  eval "$(pyenv init - zsh)"
 fi
 
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
@@ -42,12 +42,9 @@ antigen bundle python
 antigen bundle sudo
 antigen bundle wd
 
-antigen bundle caarlos0/git-add-remote
-antigen bundle fabiokiatkowski/exercism.plugin.zsh
 antigen bundle Vifon/deer
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle arzzen/calc.plugin.zsh
-antigen bundle djui/alias-tips
+antigen bundle zsh-users/zsh-autosuggestions
 
 antigen theme gilmrjc/bullet-train-oh-my-zsh-theme bullet-train
 
@@ -56,9 +53,6 @@ antigen apply
 autoload -U deer
 zle -N deer
 bindkey '\ek' deer
-
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -77,7 +71,4 @@ fi
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ please"
-
 alias nv=nvim
-eval "$(thefuck --alias)"
