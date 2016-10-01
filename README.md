@@ -50,9 +50,33 @@ This is some information about what it is installed in my dots.
 |md        |mkdir -p                                     |
 |rd        |rmdir                                        |
 |lsa       |ls -lah                                      |
-|l         |ls -lah                                      |
-|ll        |ls -lh                                       |
-|la        |ls -lAh                                      |
+|l         |ls -lFh                                      |
+|ll        |ls -l                                        |
+|la        |ls -lAFh                                     |
+|lr        |ls -tRFh                                     |
+|lt        |ls -ltFh                                     |
+|ldot      |ls -ld .*                                    |
+|lS        |ls -1FSsh                                    |
+|lart      |ls -1Fcart                                   |
+|lrt       |ls -1Fcrt                                    |
+|zshrc     |$EDITOR ~/.zshrc                             |
+|t         |tail -f                                      |
+|H         | \| head                                     |
+|T         | \| tail                                     |
+|G         | \| grep                                     |
+|L         | \| less                                     |
+|LL        | 2>&1 \| less                                |
+|CA        | 2>&1 \| cat -A                              |
+|NE        | 2> /dev/null                                |
+|NUL       | > /dev/null 2>&1                            |
+|h         |history                                      |
+|help      |man                                          |
+|p         |ps -f                                        |
+|unexport  |unset                                        |
+|dud       |du -d 1 -h                                   |
+|duf       |du -sh *                                     |
+|fd        |find . -type d -name                         |
+|ff        |find . -type f -name                         |
 |pu        |push directory                               |
 |po        |pop directory                                |
 |clipcopy  |copy output                                  |
