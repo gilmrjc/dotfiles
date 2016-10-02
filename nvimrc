@@ -1,42 +1,48 @@
-"" Load vim-plug
+"Load vim-plug
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
   execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
 call plug#begin()
 
-" Plugins
+"Plugins
 Plug 'junegunn/vim-plug'
-Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
-Plug 'valloric/youcompleteme', { 'do': 'python3 install.py --tern-completer --clang-completer'}
-Plug 'tpope/vim-fugitive'
+"Markdown syntaxis
 Plug 'tpope/vim-markdown', { 'for' : 'markdown' }
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'tpope/vim-surround'
-Plug 'raimondi/delimitmate'
-Plug 'mattn/emmet-vim',  { 'for': 'html' }
-Plug 'othree/html5.vim', { 'for': 'html' }
-Plug 'hail2u/vim-css3-syntax', { 'for': [ 'css', 'scss', 'html' ] }
-Plug 'gko/vim-coloresque', { 'for': [ 'css', 'scss', 'html' ] }
-Plug 'Yggdroot/indentLine'
-Plug 'tpope/vim-commentary'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
-Plug 'ehamberg/vim-cute-python', { 'for': 'python' }
-Plug 'sheerun/vim-polyglot'
-Plug 'airblade/vim-gitgutter'
-Plug 'majutsushi/tagbar'
+"HTML and CSS editing
+Plug 'othree/html5.vim', { 'for': ['html', 'htmldjango'] }
+Plug 'mattn/emmet-vim',  { 'for': ['css', 'html', 'htmldjango', 'scss'] }
+Plug 'hail2u/vim-css3-syntax', { 'for': [ 'css', 'scss', 'html', 'htmldjango' ] }
+Plug 'gko/vim-coloresque', { 'for': [ 'css', 'scss', 'html', 'htmldjango' ] }
+Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
+"IDE-like plugins
+Plug 'valloric/youcompleteme', { 'do': 'python3 install.py --tern-completer --clang-completer'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'tpope/vim-surround'
+Plug 'raimondi/delimitmate'
+Plug 'tpope/vim-commentary'
+Plug 'Yggdroot/indentLine'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'sheerun/vim-polyglot'
+Plug 'majutsushi/tagbar'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
-
+Plug 'scrooloose/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'bling/vim-bufferline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Python
+Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
+Plug 'ehamberg/vim-cute-python', { 'for': 'python' }
+"CtrlP
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
 "Colorschemas
 Plug 'evgenyzinoviev/vim-vendetta'
 Plug 'dfxyz/CandyPaper.vim'
@@ -49,29 +55,39 @@ call plug#end()
 
 filetype plugin indent on
 
+"define colorscheme
 colorscheme vendetta
 hi Normal ctermbg=none
 
+"Use pymatcher for CtrlP
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
+"Editorconfig exclude fugitive buffers
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
+"YCM options
 let g:ycm_complete_in_strings = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 
-let g:indent_guides_auto_colors = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+"better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<right>"
+let g:UltiSnipsJumpForwardTrigger = "<right>"
+let g:UltiSnipsJumpBackwardTrigger = "<left>"
 
+"powerline options
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
 let g:airline_theme = 'wombat'
 
-"let g:indentLine_enabled = 1
+"IndentLine options
+let g:indentLine_setConceal = 0
 let g:indentLine_indentLevel = 3
 
-let NERDTreeIgnore = ['\.pyc$']
+"NERDTree options
+map <F4> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 
+"Show hints
 set listchars=tab:▸\ ,trail:·,extends:>,precedes:<,nbsp:·
 if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
     set listchars=tab:⇥\ ,trail:␣,extends:⇉,precedes:⇇,nbsp:⚭
@@ -115,6 +131,13 @@ set title
 set nobackup
 
 let g:NumberToggleTrigger="<F2>"
+nmap <F3> :GitGutterLineHighlightsToggle<CR>
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_autofocus=1
+let g:tagbar_autoclose=1
+
+autocmd FileType html,htmldjango,css,scss :EmmetInstall
+let g:user_emmet_leader_key="<C-e>"
 
 "Remap leader
 let mapleader=","
@@ -137,7 +160,7 @@ nnoremap <A-l> <C-w>l
 
 nmap <silent> ,/ :nohlsearch<CR>
 
-"sudo commands
+"sudo write
 cmap w!! w !sudo tee % >/dev/null
 
 "Format this file
@@ -150,18 +173,20 @@ autocmd VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 "ESC from terminal mode
 :tnoremap <ESC> <C-\><C-n>
 
+"set conceal to display text in insert mode
 set concealcursor=nc
+set conceallevel=2
 
 "Copy to clipboard
 vnoremap  <leader>y  "+y
+nnoremap  <leader>y  "+yy
+"Copy to middle button
 vnoremap  <leader>Y  "*y
-nnoremap  <leader>y  "+y
-nnoremap  <leader>yy  "+yy
-nnoremap  <leader>Y  "*y
-nnoremap  <leader>YY  "*yy
+nnoremap  <leader>Y  "*yy
 
 "Paste from clipboard
-nnoremap <leader>p "*p
-nnoremap <leader>P "*P
-vnoremap <leader>p "*p
-vnoremap <leader>P "*P
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+"Paste from middle button
+nnoremap <leader><leader>p "*p
+nnoremap <leader><leader>P "*P

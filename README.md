@@ -6,15 +6,10 @@ towards Python.
 ## Dependencies
 
 * ZSH
-
 * NeoVIM
-
 * xmodmap
-
 * Python 3
-
 * Git
-
 * Nerd Fonts (included with the files: Anonymice, Inconsolata, Knack)
 
 ## Installation
@@ -234,6 +229,28 @@ This is some information about what it is installed in my dots.
 Marks: (, ), {, }, [, ], <, and >. The targets b, B, r, and a are aliases
 for ), }, ], and >.
 
-Marks-in-line: ',",`.
+Marks-in-line: ',",\`.
 
 A t is a pair of HTML or XML tags.
+
+### Emmet
+
+**Only on HTML and CSS files.**
+
+Write a html abbreviation and use <C-e>, to expand it. To update the tag
+properties use <C-e>u. This modes also work in visual mode.
+
+<C-e>d selects inward the tags in visual mode, while <C-e>D selects
+from the next tag.
+
+<C-e>/ wraps around code in comments.
+
+### Commentary
+
+**gcc** comments the current line and **gc** the visual block selected.
+
+### Multiple-cursors
+
+<C-n> selects the current word and look for it in the lines below. To enter
+normal mode just type v and use i,I,a,A commands. To change the text use the
+c or s commands. <C-x> skips the to the next ocurrence and <C-p> go back.

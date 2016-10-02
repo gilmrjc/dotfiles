@@ -6,7 +6,7 @@
 - clean: ['~']
 
 - link:
-    ~/.config/nvim/init.vim: nvim
+    ~/.config/nvim/init.vim: nvimrc
     ~/.zshrc: zshrc
     ~/.antigen.zsh: antigen/antigen.zsh
     ~/.fonts: fonts
