@@ -126,6 +126,10 @@ set incsearch
 set backspace=indent,eol,start
 set hidden
 
+set foldlevelstart=5
+set foldnestmax=10
+set foldmethod=syntax
+
 set scrolloff=4
 set sidescrolloff=2
 set sidescroll=1
