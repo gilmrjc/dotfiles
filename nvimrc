@@ -76,6 +76,8 @@ let g:UltiSnipsExpandTrigger = "<right>"
 let g:UltiSnipsJumpForwardTrigger = "<right>"
 let g:UltiSnipsJumpBackwardTrigger = "<left>"
 
+set cursorline
+set lazyredraw
 "powerline options
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
