@@ -254,3 +254,33 @@ from the next tag.
 <C-n> selects the current word and look for it in the lines below. To enter
 normal mode just type v and use i,I,a,A commands. To change the text use the
 c or s commands. <C-x> skips the to the next ocurrence and <C-p> go back.
+
+### Git-gutter
+
+|Command     |Action                 |
+|------------|-----------------------|
+|[c          |Go to next hunk        |
+|]c          |Go to previous hunk    |
+|<leader>hu  |Undo hunk              |
+|<leader>hs  |Stage hunk             |
+|<leader>hp  |Preview changes        |
+|<F3>        |Toggle hunk highlight  |
+
+### CtrlP
+
+|Command |Action                             |
+|--------|-----------------------------------|
+|<C-f>   |Goes to the next mode              |
+|<C-b>   |Goes to the previous mode          |
+|<C-d>   |Filename only filter               |
+|<C-r>   |Regex filter                       |
+|<C-k>   |Move up in the list                |
+|<C-j>   |Move down in the list              |
+|<C-t>   |Open in a new tab                  |
+|<C-v>   |Open in a vertical split           |
+|<C-x>   |Open in a horizontal split         |
+|<C-n>   |Select next string in history      |
+|<C-p>   |Select previous string in history  |
+|<C-z>   |Mark file                          |
+|<C-o>   |Open file                          |
+|<C-y>   |Create file                        |
