@@ -1,6 +1,6 @@
 "Load vim-plug
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
-  execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
 call plug#begin()
@@ -102,7 +102,7 @@ if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
 endif
 set list
 
-"IDE-like settings
+" IDE-like settings
 set ruler
 set number
 set relativenumber
@@ -118,6 +118,7 @@ set shiftwidth=4
 set smarttab
 set expandtab
 set shiftround
+nnoremap <leader>= mzgg=G`zz
 
 " Editor tweaks
 set title
@@ -126,6 +127,18 @@ set autoread
 set showcmd
 set backspace=indent,eol,start
 set hidden
+set virtualedit=onemore
+set splitbelow
+set splitright
+nnoremap <leader>m :mksession!<CR>
+
+" Buffer helpers
+for i in range(1, 99)
+    execute printf('nnoremap <Leader>%d :%db<CR>', i, i)
+endfor
+for i in range(1, 99)
+    execute printf('nnoremap <Leader>d%d :Bdelete %d<CR>', i, i)
+endfor
 
 " Searching
 set hlsearch
@@ -133,7 +146,7 @@ set smartcase
 set showmatch
 set incsearch
 set gdefault
-nmap <silent> ,/ :nohlsearch<CR>
+nnoremap <silent> <leader>/ :nohlsearch<CR>
 
 " Folding
 set foldlevelstart=5
@@ -253,14 +266,14 @@ nnoremap <leader><leader>P "*P
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
+    let p = '^\s*|\s.*\s|\s*$'
+    if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+        let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+        let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+        Tabularize/|/l1
+        normal! 0
+        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+    endif
 endfunction
 
 augroup TabSettings
