@@ -111,6 +111,7 @@ set relativenumber
 set autoindent
 set copyindent
 set smartindent
+set breakindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -131,6 +132,7 @@ set hlsearch
 set smartcase
 set showmatch
 set incsearch
+set gdefault
 nmap <silent> ,/ :nohlsearch<CR>
 
 " Folding
@@ -182,6 +184,14 @@ let g:user_emmet_leader_key="<C-e>"
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
 imap <C-l> <Plug>delimitMateJumpMany
+
+" Fugitive shortcuts
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gl :Glog<CR>
+nnoremap <silent> <leader>gp :Git push<CR>
 
 " Remap leader
 let mapleader=","
@@ -274,7 +284,7 @@ augroup configgroup
     autocmd FileType html nnoremap <expr> k v:count ? 'k' : 'gk'
     autocmd FileType html vnoremap <expr> j v:count ? 'j' : 'gj'
     autocmd FileType html vnoremap <expr> k v:count ? 'k' : 'gk'
-    autocmd BufEnter *.html setlocal wrap
+    autocmd BufEnter,BufRead *.html setlocal wrap
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter Makefile setlocal noexpandtab
 augroup END
