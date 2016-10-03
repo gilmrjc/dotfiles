@@ -10,11 +10,14 @@ Plug 'junegunn/vim-plug'
 "Markdown syntaxis
 Plug 'tpope/vim-markdown', { 'for' : 'markdown' }
 "HTML and CSS editing
-Plug 'othree/html5.vim', { 'for': ['html', 'htmldjango'] }
-Plug 'mattn/emmet-vim',  { 'for': ['css', 'html', 'htmldjango', 'scss'] }
-Plug 'hail2u/vim-css3-syntax', { 'for': [ 'css', 'scss', 'html', 'htmldjango' ] }
-Plug 'gko/vim-coloresque', { 'for': [ 'css', 'scss', 'html', 'htmldjango' ] }
+Plug 'othree/html5.vim', { 'for': ['html', 'htmldjango', 'jinja'] }
+Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'jinja'}
+Plug 'mattn/emmet-vim',  { 'for': ['css', 'html', 'htmldjango', 'jinja', 'scss'] }
+Plug 'hail2u/vim-css3-syntax', { 'for': [ 'css', 'scss', 'html', 'htmldjango', 'jinja' ] }
+Plug 'gko/vim-coloresque', { 'for': [ 'css', 'scss', 'html', 'htmldjango', 'jinja' ] }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
+Plug 'vim-scripts/closetag.vim', { 'for': ['html', 'htmldjango', 'jinja'] }
+Plug 'elzr/vim-json', { 'for': 'json' }
 "IDE-like plugins
 Plug 'valloric/youcompleteme', { 'do': 'python3 install.py --tern-completer --clang-completer'}
 Plug 'SirVer/ultisnips'
@@ -29,6 +32,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'justinmk/vim-sneak'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'matze/vim-move'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -72,12 +77,11 @@ let g:ycm_complete_in_strings = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 "better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<right>"
+let g:UltiSnipsExpandTrigger = "<C-s>"
 let g:UltiSnipsJumpForwardTrigger = "<right>"
 let g:UltiSnipsJumpBackwardTrigger = "<left>"
 
 set cursorline
-set lazyredraw
 "powerline options
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
@@ -88,7 +92,6 @@ let g:indentLine_setConceal = 0
 let g:indentLine_indentLevel = 3
 
 "NERDTree options
-map <F4> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 
 "Show hints
@@ -104,57 +107,96 @@ set ruler
 set number
 set relativenumber
 
+" Tab and indent settings
 set autoindent
 set copyindent
+set smartindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set smartindent
 set smarttab
 set expandtab
 set shiftround
 
+" Editor tweaks
+set title
 set nowrap
-set showmatch
 set autoread
 set showcmd
-
-set hlsearch
-set smartcase
-set incsearch
-
 set backspace=indent,eol,start
 set hidden
 
+" Searching
+set hlsearch
+set smartcase
+set showmatch
+set incsearch
+nmap <silent> ,/ :nohlsearch<CR>
+
+" Folding
 set foldlevelstart=5
 set foldnestmax=10
 set foldmethod=syntax
 
+" Reselect after indent
+vnoremap > >gv
+vnoremap < <gv
+
+" One tap indent
+nnoremap <A-<> <<
+nnoremap <A->> >>
+
+" Jump to the end of the yanked, put'ed text
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+" Select all
+noremap <Leader>a ggVG
+
+" Do the splits
+noremap <Leader>s :split<CR>
+noremap <Leader>h :split<CR>
+noremap <Leader>v :vsplit<CR>
+
+" Redraw the screen
 set scrolloff=4
 set sidescrolloff=2
 set sidescroll=1
 
-set title
-
 set nobackup
 
+" Function keys
 let g:NumberToggleTrigger="<F2>"
 nmap <F3> :GitGutterLineHighlightsToggle<CR>
+map <F4> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus=1
 let g:tagbar_autoclose=1
 
-autocmd FileType html,htmldjango,css,scss :EmmetInstall
+" Emmet configuration
+autocmd FileType html,htmldjango,jinja2,css,scss :EmmetInstall
 let g:user_emmet_leader_key="<C-e>"
 
-"Remap leader
+" Auto-pairing
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
+imap <C-l> <Plug>delimitMateJumpMany
+
+" Remap leader
 let mapleader=","
 
-"Vim keyboard navigation only
+" Vim keyboard navigation only
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+
+" Smooth scrolling
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 120, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 120, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 120, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 120, 4)<CR>
 
 " Easy window navigation
 tnoremap <A-h> <C-\><C-n><C-w>h
@@ -165,8 +207,6 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
-
-nmap <silent> ,/ :nohlsearch<CR>
 
 "sudo write
 cmap w!! w !sudo tee % >/dev/null
@@ -213,18 +253,28 @@ function! s:align()
   endif
 endfunction
 
-augroup configgroup
+augroup TabSettings
     autocmd!
     autocmd FileType html setlocal tabstop=2
     autocmd FileType html setlocal shiftwidth=2
     autocmd FileType html setlocal softtabstop=2
-    autocmd FileType  setlocal tabstop=2
-    autocmd FileType  setlocal shiftwidth=2
-    autocmd FileType c setlocal softtabstop=2
+    autocmd FileType css setlocal tabstop=2
+    autocmd FileType css setlocal shiftwidth=2
+    autocmd FileType css setlocal softtabstop=2
     autocmd FileType ruby setlocal tabstop=2
     autocmd FileType ruby setlocal shiftwidth=2
     autocmd FileType ruby setlocal softtabstop=2
+augroup END
+
+
+augroup configgroup
+    autocmd!
     autocmd FileType python setlocal textwidth=80
+    autocmd FileType html nnoremap <expr> j v:count ? 'j' : 'gj'
+    autocmd FileType html nnoremap <expr> k v:count ? 'k' : 'gk'
+    autocmd FileType html vnoremap <expr> j v:count ? 'j' : 'gj'
+    autocmd FileType html vnoremap <expr> k v:count ? 'k' : 'gk'
+    autocmd BufEnter *.html setlocal wrap
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter Makefile setlocal noexpandtab
 augroup END
