@@ -62,10 +62,10 @@ This is some information about what it is installed in my dots.
 |T         | \| tail                                     |
 |G         | \| grep                                     |
 |L         | \| less                                     |
-|LL        | 2>&1 \| less                                |
-|CA        | 2>&1 \| cat -A                              |
-|NE        | 2> /dev/null                                |
-|NUL       | > /dev/null 2>&1                            |
+|LL        | 2\>&1 \| less                               |
+|CA        | 2\>&1 \| cat -A                             |
+|NE        | 2\> /dev/null                               |
+|NUL       | \> /dev/null 2\>&1                          |
 |h         |history                                      |
 |help      |man                                          |
 |p         |ps -f                                        |
@@ -90,7 +90,7 @@ This is some information about what it is installed in my dots.
 | Alias                | Command                                                                                                                                 |
 |:---------------------|:----------------------------------------------------------------------------------------------------------------------------------------|
 | g                    | git                                                                                                                                     |
-| ga                   | git add                                                                                                                                 |
+| ga                   | git dd                                                                                                                                 |
 | gaa                  | git add --all                                                                                                                           |
 | gapa                 | git add --patch                                                                                                                         |
 | gb                   | git branch                                                                                                                              |
@@ -151,8 +151,8 @@ This is some information about what it is installed in my dots.
 | glgp                 | git log --stat --color -p                                                                                                               |
 | glo                  | git log --oneline --decorate --color                                                                                                    |
 | glog                 | git log --oneline --decorate --color --graph                                                                                            |
-| glol                 | git log --graph --pretty = format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit       |
-| glola                | git log --graph --pretty = format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all |
+| glol                 | git log --graph --pretty = format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)\<%an\>%Creset' --abbrev-commit       |
+| glola                | git log --graph --pretty = format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)\<%an\>%Creset' --abbrev-commit --all |
 | glp                  | _git_log_prettily                                                                                                                       |
 | gm                   | git merge                                                                                                                               |
 | gmom                 | git merge origin/master                                                                                                                 |
@@ -205,7 +205,7 @@ This is some information about what it is installed in my dots.
 | glum                 | git pull upstream master                                                                                                                |
 | gvt                  | git verify-tag                                                                                                                          |
 | gwch                 | git whatchanged -p --abbrev-commit --pretty = medium                                                                                    |
-| gwip                 | git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit -m "--wip--"                                                      |<Paste>
+| gwip                 | git add -A; git rm $(git ls-files --deleted) 2\> /dev/null; git commit -m "--wip--"                                                     |
 
 ## Vim
 
@@ -213,21 +213,21 @@ This is some information about what it is installed in my dots.
 
 **The \* means the current cursor position.**
 
-|Old text           |Command  |New text             |
-|-------------------|---------|---------------------|
-|"Hello *world!"    |ds"      |Hello world!         |
-|(123+4*56)/2       |ds)      |123+456/2            |
-|<div>Yo!*</div>    |dst      |Yo!                  |
-|"Hello *world!"    |cs"'     |'Hello world!'       |
-|"Hello *world!"    |cs"<q>   |<q>Hello world!</q>  |
-|(123+4*56)/2       |cs)]     |[123+456]/2          |
-|(123+4*56)/2       |cs)[     |[ 123+456 ]/2        |
-|<div>Yo!*</div>    |cst<p>   |<p>Yo!</p>           |
-|Hello w*orld!      |ysiw)    |Hello (world)!
-|    Hello w*orld!  |yssB     |    {Hello world!}
+| Old text            | Command   | New text                |
+|---------------------|-----------|-------------------------|
+| "Hello *world!"     | ds"       | Hello world!            |
+| (123+4*56)/2        | ds)       | 123+456/2               |
+| \<div\>Yo!*\</div\> | dst       | Yo!                     |
+| "Hello *world!"     | cs"'      | 'Hello world!'          |
+| "Hello *world!"     | cs"\<q\>  | \<q\>Hello world!\</q\> |
+| (123+4*56)/2        | cs)]      | [123+456]/2             |
+| (123+4*56)/2        | cs)[      | [ 123+456 ]/2           |
+| \<div\>Yo!*\</div\> | cst\<p\>  | \<p\>Yo!\</p\>          |
+| Hello w*orld!       | ysiw)     | Hello (world)!
+| Hello w*orld!       | yssB      | {Hello world!}
 
-Marks: (, ), {, }, [, ], <, and >. The targets b, B, r, and a are aliases
-for ), }, ], and >.
+Marks: (, ), {, }, [, ], \<, and \>. The targets b, B, r, and a are aliases
+for ), }, ], and \>.
 
 Marks-in-line: ',",\`.
 
@@ -237,13 +237,13 @@ A t is a pair of HTML or XML tags.
 
 **Only on HTML and CSS files.**
 
-Write a html abbreviation and use <C-e>, to expand it. To update the tag
-properties use <C-e>u. This modes also work in visual mode.
+Write a html abbreviation and use \<C-e\>, to expand it. To update the tag
+properties use \<C-e\>u. This modes also work in visual mode.
 
-<C-e>d selects inward the tags in visual mode, while <C-e>D selects
+\<C-e\>d selects inward the tags in visual mode, while \<C-e\>D selects
 from the next tag.
 
-<C-e>/ wraps around code in comments.
+\<C-e\>/ wraps around code in comments.
 
 ### Commentary
 
@@ -251,36 +251,36 @@ from the next tag.
 
 ### Multiple-cursors
 
-<C-n> selects the current word and look for it in the lines below. To enter
+\<C-n\> selects the current word and look for it in the lines below. To enter
 normal mode just type v and use i,I,a,A commands. To change the text use the
-c or s commands. <C-x> skips the to the next ocurrence and <C-p> go back.
+c or s commands. \<C-x\> skips the to the next ocurrence and \<C-p\> go back.
 
 ### Git-gutter
 
-|Command     |Action                 |
-|------------|-----------------------|
-|[c          |Go to next hunk        |
-|]c          |Go to previous hunk    |
-|<leader>hu  |Undo hunk              |
-|<leader>hs  |Stage hunk             |
-|<leader>hp  |Preview changes        |
-|<F3>        |Toggle hunk highlight  |
+| Command      | Action                  |
+|--------------|-------------------------|
+| [c           | Go to next hunk         |
+| ]c           | Go to previous hunk     |
+| \<leader\>hu | Undo hunk               |
+| \<leader\>hs | Stage hunk              |
+| \<leader\>hp | Preview changes         |
+| \<F3\>       | Toggle hunk highlight   |
 
 ### CtrlP
 
-|Command |Action                             |
-|--------|-----------------------------------|
-|<C-f>   |Goes to the next mode              |
-|<C-b>   |Goes to the previous mode          |
-|<C-d>   |Filename only filter               |
-|<C-r>   |Regex filter                       |
-|<C-k>   |Move up in the list                |
-|<C-j>   |Move down in the list              |
-|<C-t>   |Open in a new tab                  |
-|<C-v>   |Open in a vertical split           |
-|<C-x>   |Open in a horizontal split         |
-|<C-n>   |Select next string in history      |
-|<C-p>   |Select previous string in history  |
-|<C-z>   |Mark file                          |
-|<C-o>   |Open file                          |
-|<C-y>   |Create file                        |
+|Command   |Action                             |
+|----------|-----------------------------------|
+|\<C-f\>   |Goes to the next mode              |
+|\<C-b\>   |Goes to the previous mode          |
+|\<C-d\>   |Filename only filter               |
+|\<C-r\>   |Regex filter                       |
+|\<C-k\>   |Move up in the list                |
+|\<C-j\>   |Move down in the list              |
+|\<C-t\>   |Open in a new tab                  |
+|\<C-v\>   |Open in a vertical split           |
+|\<C-x\>   |Open in a horizontal split         |
+|\<C-n\>   |Select next string in history      |
+|\<C-p\>   |Select previous string in history  |
+|\<C-z\>   |Mark file                          |
+|\<C-o\>   |Open file                          |
+|\<C-y\>   |Create file                        |
