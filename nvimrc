@@ -62,6 +62,9 @@ call plug#end()
 
 filetype plugin indent on
 
+" Remap leader
+let mapleader=","
+
 "define colorscheme
 colorscheme vendetta
 hi Normal ctermbg=none
@@ -205,9 +208,6 @@ nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
-
-" Remap leader
-let mapleader=","
 
 " Vim keyboard navigation only
 map <up> <nop>
