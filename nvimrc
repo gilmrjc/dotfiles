@@ -193,7 +193,7 @@ let g:tagbar_autofocus=1
 let g:tagbar_autoclose=1
 
 " Emmet configuration
-autocmd FileType html,htmldjango,jinja2,css,scss :EmmetInstall
+autocmd FileType html,htmldjango,jinja2,css,scss EmmetInstall
 let g:user_emmet_leader_key="<C-e>"
 
 " Auto-pairing
