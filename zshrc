@@ -15,19 +15,19 @@ pyenv install -s 3.4.5
 pyenv install -s 3.5.2
 pyenv install -s pypy-4.0.1
 pyenv rehash
-pyenv global 3.4.5 3.5.2 2.7.12 3.3.6 pypy-4.0.1 system
+pyenv global 3.4.5 3.5.2 system
 
 PATH=$PATH:~/.local/bin
 
 if [ -d "$HOME/.rbenv" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init - zsh)"
+  eval "$(rbenv init - )"
 else
   git clone https://github.com/rbenv/rbenv.git ~/.rbenv
   cd ~/.rbenv && src/configure && make -C src
   git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
   export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init - zsh)"
+  eval "$(rbenv init - )"
 fi
 
 source $HOME/.antigen.zsh
