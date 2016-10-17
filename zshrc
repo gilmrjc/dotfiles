@@ -18,6 +18,18 @@ pyenv rehash
 pyenv global 3.4.5 3.5.2 2.7.12 3.3.6 pypy-4.0.1 system
 
 PATH=$PATH:~/.local/bin
+
+if [ -d "$HOME/.rbenv" ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init - zsh)"
+else
+  git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+  cd ~/.rbenv && src/configure && make -C src
+  git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init - zsh)"
+fi
+
 source $HOME/.antigen.zsh
 
 antigen use oh-my-zsh
